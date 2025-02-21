@@ -36,13 +36,18 @@ struct ContentView: View {
                 let message2 = "You are Great!"
                 let imageString1 = "sun.max.fill"
                 let imageString2 = "hand.thumbsup"
-                if counter % 2 == 0{
-                    message = message1
-                    imageName = imageString1
-                } else {
-                    message = message2
-                    imageName = imageString2
-                } //Talk about scope as since they don't exist outside the button
+//                if counter % 2 == 0{
+//                    message = message1
+//                    imageName = imageString1
+//                } else {
+//                    message = message2
+//                    imageName = imageString2
+//                }
+                
+                //Talk about scope as since they don't exist outside the button
+                
+                message = (counter % 2 == 0 ? message1 : message2 )
+                imageName = (counter % 2 == 0 ? imageString1 : imageString2)
                 counter += 1
             }
             .buttonStyle(.borderedProminent)
