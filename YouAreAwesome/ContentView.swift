@@ -16,16 +16,18 @@ struct ContentView: View {
         VStack {
             Spacer()
             
-            Image(systemName:imageName)
+            Image(imageName)
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(.orange)
+                .clipShape(.rect(cornerRadius: 30))
+                .shadow(radius: 30)
+
             //.frame(width: 200, height: 200)
             
             
             Text(message)
                 .font(.largeTitle)
-                .fontWeight(.ultraLight)
+                .fontWeight(.heavy)
                 .foregroundStyle(.black)
             
             Spacer()
@@ -34,8 +36,9 @@ struct ContentView: View {
                 //Could have used else to change it from "" to you are awesome
                 let message1 = "You are Awesome!"
                 let message2 = "You are Great!"
-                let imageString1 = "sun.max.fill"
-                let imageString2 = "hand.thumbsup"
+//                let imageString1 = "image0"
+//                let imageString2 = "image1"
+                //removed string literals here and included below
 //                if counter % 2 == 0{
 //                    message = message1
 //                    imageName = imageString1
@@ -47,12 +50,12 @@ struct ContentView: View {
                 //Talk about scope as since they don't exist outside the button
                 
                 message = (counter % 2 == 0 ? message1 : message2 )
-                imageName = (counter % 2 == 0 ? imageString1 : imageString2)
+                imageName = (counter % 2 == 0 ? "image0" : "image1")
                 counter += 1
             }
             .buttonStyle(.borderedProminent)
             .font(.title2)
-            .tint(.orange)
+            //.tint(.orange)
         }
         .padding()
     }
