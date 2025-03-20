@@ -32,7 +32,7 @@ struct ContentView: View {
             
             Spacer()
             // CMD + A to highlight and Ctrl + i to fix indent
-            Button("Press Me") {
+            Button("Show Message") {
                 //Could have used else to change it from "" to you are awesome
                 let message1 = "You are Awesome!"
                 let message2 = "You are Great!"
@@ -50,9 +50,20 @@ struct ContentView: View {
                 //Talk about scope as since they don't exist outside the button
                 
                 message = (counter % 2 == 0 ? message1 : message2 )
-                imageName = (counter % 2 == 0 ? "image0" : "image1")
-                counter += 1
+//                imageName = (counter % 2 == 0 ? "image0" : "image1")
+                //my solution before the video.  I was already using a counter anyway
+                //TODO: Update the imageName variable
+                if counter < 9 {
+                    
+                    counter += 1
+                }else {
+                    counter = 0
+   
+                }
+                imageName = "image\(counter)"
             }
+            
+            
             .buttonStyle(.borderedProminent)
             .font(.title2)
             //.tint(.orange)
@@ -64,3 +75,14 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+//Notes for 1.8
+//Data types are set by what type of information we store when they are initialized
+//Can't change type, option click to see type
+//Int - non decimal numbers
+//Strint - Text
+//Compound operator +=
+//show console on Xcode in lower right area debug
+//Left variables area, right console
+//CMD+K to clear the console
+//Breadcrumb code with TODO (top bar/jump bar)
+//TODO, FIXME, MARK, use dashes to make it more promeneent
