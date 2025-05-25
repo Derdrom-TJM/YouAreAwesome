@@ -10,7 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @State private var message = ""
     @State private var imageName = ""
-    @State private var counter = 0
+    @State private var imageCounter = 0
+    @State private var messages = ["You Are Awesome",
+                                   "You Are Great",
+                                   "Fabulous? That's You",
+                                   "You Are A Swifty Now",
+                                   "Keep It Rocking!"]
+    @State private var messageCounter = 0
+    
     
     var body: some View {
         VStack {
@@ -29,14 +36,36 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundStyle(.black)
+                .multilineTextAlignment(.center)
             
             Spacer()
             // CMD + A to highlight and Ctrl + i to fix indent
             Button("Show Message") {
                 //Could have used else to change it from "" to you are awesome
-                let message1 = "You are Awesome!"
-                let message2 = "You are Great!"
-//                let imageString1 = "image0"
+//------1.9 Code Challenge-----------
+                if messageCounter < messages.count - 1{
+                    messageCounter += 1
+                } else{
+                    messageCounter = 0
+                }
+                message = messages[messageCounter]
+
+                
+//-----------------
+//                let message1 = "You are Awesome!"
+//                let message2 = "You are Great!"
+//                let message3 = "Fabulous? That's You"
+//
+//                if message == message1{
+//                    message = message2
+//                }else if message == message2{
+//                    message = message3
+//                }else {
+//                    message = message1
+//                }
+                
+                
+                //let imageString1 = "image0"
 //                let imageString2 = "image1"
                 //removed string literals here and included below
 //                if counter % 2 == 0{
@@ -49,18 +78,19 @@ struct ContentView: View {
                 
                 //Talk about scope as since they don't exist outside the button
                 
-                message = (counter % 2 == 0 ? message1 : message2 )
+               //Removing this back to a standard if statement to follow video
+                //message = (counter % 2 == 0 ? message1 : message2 )
 //                imageName = (counter % 2 == 0 ? "image0" : "image1")
                 //my solution before the video.  I was already using a counter anyway
                 //TODO: Update the imageName variable
-                if counter < 9 {
+                if imageCounter < 9 {
                     
-                    counter += 1
+                    imageCounter += 1
                 }else {
-                    counter = 0
+                    imageCounter = 0
    
                 }
-                imageName = "image\(counter)"
+                imageName = "image\(imageCounter)"
             }
             
             
