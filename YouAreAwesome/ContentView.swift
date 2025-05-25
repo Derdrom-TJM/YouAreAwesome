@@ -15,28 +15,33 @@ struct ContentView: View {
                                    "You Are Great",
                                    "Fabulous? That's You",
                                    "You Are A Swifty Now",
-                                   "Keep It Rocking!"]
+                                   "Keep It Rocking!", "You will be the Greatest App Developer in History"]
     @State private var messageCounter = 0
     
     
     var body: some View {
         VStack {
-            Spacer()
+            Text(message)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundStyle(.orange)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.5)
+                .frame(height: 120)
+                .animation(.easeInOut(duration: 0.15), value: message)
+            
             
             Image(imageName)
                 .resizable()
                 .scaledToFit()
                 .clipShape(.rect(cornerRadius: 30))
                 .shadow(radius: 30)
+                .animation(.default, value: imageName)
 
             //.frame(width: 200, height: 200)
             
             
-            Text(message)
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundStyle(.black)
-                .multilineTextAlignment(.center)
+
             
             Spacer()
             // CMD + A to highlight and Ctrl + i to fix indent
