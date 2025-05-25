@@ -48,12 +48,8 @@ struct ContentView: View {
             Button("Show Message") {
                 //Could have used else to change it from "" to you are awesome
 //------1.9 Code Challenge-----------
-                if messageCounter < messages.count - 1{
-                    messageCounter += 1
-                } else{
-                    messageCounter = 0
-                }
-                message = messages[messageCounter]
+                
+                message = messages[Int.random(in: 0..<messages.count)]
 
                 
 //-----------------
@@ -88,14 +84,8 @@ struct ContentView: View {
 //                imageName = (counter % 2 == 0 ? "image0" : "image1")
                 //my solution before the video.  I was already using a counter anyway
                 //TODO: Update the imageName variable
-                if imageCounter < 9 {
-                    
-                    imageCounter += 1
-                }else {
-                    imageCounter = 0
-   
-                }
-                imageName = "image\(imageCounter)"
+
+                imageName = "image\(Int.random(in: 0...9))"
             }
             
             
