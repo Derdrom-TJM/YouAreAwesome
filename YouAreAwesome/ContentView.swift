@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import AVFAudio
 
 struct ContentView: View {
     @State private var message = ""
     @State private var imageName = ""
+    @State private var soundName = ""
     @State private var imageCounter = 0
     @State private var messages = ["You Are Awesome",
                                    "You Are Great",
@@ -19,6 +21,10 @@ struct ContentView: View {
 //    @State private var messageCounter = 0
     @State private var lastMessageNumber = -1
     @State private var lastImageNumber = -1
+    @State private var lastSoundNumber = -1
+    @State private var audioPlayer:AVAudioPlayer!
+    let numberOfImages = 10
+    let numberOfSounds = 6
     
     
     var body: some View {
@@ -32,6 +38,7 @@ struct ContentView: View {
                 .frame(height: 120)
                 .animation(.easeInOut(duration: 0.15), value: message)
             
+            Spacer()
             
             Image(imageName)
                 .resizable()
@@ -71,10 +78,31 @@ struct ContentView: View {
 
                 var imageNumber:Int
                 repeat {
-                    imageNumber = Int.random(in: 0...9)
+                    imageNumber = Int.random(in: 0...numberOfImages - 1)
                 } while imageNumber == lastImageNumber
                 lastImageNumber = imageNumber
                 imageName = ("image\(imageNumber)")
+                
+                var soundNumber:Int
+                repeat {
+                    soundNumber = Int.random(in: 0...numberOfSounds - 1)
+                }while soundNumber == lastSoundNumber
+                lastSoundNumber = soundNumber
+                soundName = "sound\(soundNumber)"
+
+                
+                guard let soundFile = NSDataAsset(name: soundName) else {
+                    print("😡 Could not read file named \(soundName)")
+                    return
+                }
+                do{
+                    try audioPlayer = AVAudioPlayer(data: soundFile.data)
+                    audioPlayer.play()
+
+                } catch{
+                    print("😡 ERROR: \(error.localizedDescription) creating audioPlayyer")
+                }
+                
             }
             
             
