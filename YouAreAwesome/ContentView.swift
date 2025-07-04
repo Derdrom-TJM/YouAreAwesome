@@ -62,6 +62,7 @@ struct ContentView: View {
                         if audioPlayer != nil && audioPlayer.isPlaying{
                             audioPlayer.stop()
                         }
+                        
                     }
                 
                 Spacer()
@@ -90,6 +91,7 @@ struct ContentView: View {
             }
             //.tint(.orange)
         }
+        .tint(.accentColor)
         .padding()
     }
     
@@ -122,6 +124,12 @@ struct ContentView: View {
 
 //Great Loops program for 1.14 in forLoops Playground
 
-#Preview {
+#Preview("Light Mode") {
     ContentView()
+        .preferredColorScheme(.light)
+}
+
+#Preview("Dark Mode") {
+    ContentView()
+        .preferredColorScheme(.dark)
 }
